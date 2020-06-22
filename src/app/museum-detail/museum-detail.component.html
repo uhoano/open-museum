@@ -1,0 +1,92 @@
+<h1>🏛️ {{ museum.name }}</h1>
+<div class="row">
+  <!-- MAP -->
+  <div class="col-6">
+    <app-map
+      [museumLocation]="museum.coordinates"
+      [museumPopUpName]="museum.name"
+      [museumPopUpAddress]="museum.address"
+    >
+    </app-map>
+  </div>
+
+  <!-- Details du musée -->
+  <div class="col-6">
+    <article class="card mb-3 shadow-sm">
+      <div class="card-body">
+        <div class="card-title">
+          <!-- <h2 class="h4 mb-3">{{name}}</h2> -->
+        </div>
+        <div class="">
+          <!-- PHOTO -->
+        </div>
+        <!-- Localisation -->
+        <div
+          class="row mb-2"
+          *ngIf="museum.address && museum.cp && museum.city"
+        >
+          <div class="col-1">
+            📍
+          </div>
+          <div class="col-10">
+            <p class="card-text">
+              {{ museum.address }}<br />
+              {{ museum.cp }} {{ museum.city | titlecase }}
+            </p>
+          </div>
+        </div>
+        <!-- Phone -->
+        <div class="row mb-2" *ngIf="museum.telephone">
+          <div class="col-1">
+            📞
+          </div>
+          <div class="col-10">
+            <p class="card-text">
+              <a href="tel:{{ museum.telephone }}">{{ museum.telephone }}</a>
+            </p>
+          </div>
+        </div>
+        <!-- Fax -->
+        <div class="row mb-2" *ngIf="museum.fax">
+          <div class="col-1">
+            📠
+          </div>
+          <div class="col-10">
+            <p class="card-text">{{ museum.fax }}</p>
+          </div>
+        </div>
+        <!-- Website -->
+        <div class="row mb-2" *ngIf="museum.website">
+          <div class="col-1">
+            💻
+          </div>
+          <div class="col-10">
+            <p class="card-text">
+              <a href="https://{{ museum.website }}" target="blank">{{
+                museum.website
+              }}</a>
+            </p>
+          </div>
+        </div>
+        <!-- Opening hours -->
+        <div class="row mb-2" *ngIf="museum.opening">
+          <div class="col-1">
+            🕒
+          </div>
+          <div class="col-10">
+            <p class="card-text">{{ museum.opening }}</p>
+          </div>
+        </div>
+        <!-- View detail -->
+        <div class="row mb-2">
+          <div class="col-1">
+            ⬅️
+          </div>
+          <div class="col-10">
+            <p class="card-text"><a routerLink="">Back to museums</a></p>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+</div>
